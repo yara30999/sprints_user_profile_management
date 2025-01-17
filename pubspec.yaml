@@ -38,6 +38,7 @@ dependencies:
   shared_preferences: ^2.3.5
   internet_connection_checker: ^3.0.1
   custom_refresh_indicator: ^4.0.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
