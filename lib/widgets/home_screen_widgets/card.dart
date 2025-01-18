@@ -63,7 +63,7 @@ class CardList extends StatelessWidget {
             size: MediaQuery.of(context).size.width * 0.06,
           ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_)=> const UserDetailsScreen()));
+            Navigator.push(context, MaterialPageRoute(builder: (_)=> UserDetailsScreen(employee: employee ,)));
           },
         ),
       ),

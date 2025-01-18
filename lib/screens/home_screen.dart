@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sprints_user_profile_management/models/employee.dart';
 import 'package:sprints_user_profile_management/screens/add_user_screen.dart';
+import 'package:sprints_user_profile_management/screens/edit_user_screen.dart';
 import 'package:sprints_user_profile_management/services/api_service.dart';
 import 'package:sprints_user_profile_management/services/shared_prefs_service.dart';
 import 'package:sprints_user_profile_management/widgets/home_screen_widgets/card.dart';
@@ -105,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              AddUserScreen(),
+                              EditUserScreen(employee: employee,),
                         ),
                       );
                     }

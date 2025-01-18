@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sprints_user_profile_management/models/employee.dart';
 
 class UserDetailsScreen extends StatelessWidget {
-  const UserDetailsScreen({super.key});
+  final Employee employee;
+  const UserDetailsScreen({super.key, required this.employee});
 
   @override
   Widget build(BuildContext context) {

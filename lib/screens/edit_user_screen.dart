@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sprints_user_profile_management/models/employee.dart';
 
 class EditUserScreen extends StatelessWidget {
-  const EditUserScreen({super.key});
+  final Employee employee;
+  const EditUserScreen({super.key, required this.employee});
 
   /*
       very similar to add user screen 
