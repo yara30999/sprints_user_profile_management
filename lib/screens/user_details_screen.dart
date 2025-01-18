@@ -7,7 +7,7 @@ class UserDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String notFoundMSG = "No data found" ;
+    String notFoundMSG = "No data found";
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
@@ -44,13 +44,16 @@ class UserDetailsScreen extends StatelessWidget {
               ),
               customText("Name : ", employee.name),
               customText("Id : ", "${employee.id}"),
-              customText("Username : ", employee.username ?? notFoundMSG),
+              customText("Username : ", employee.username),
               customText("Email : ", employee.email ?? notFoundMSG),
-              customText("Phone : ", employee.phone ?? notFoundMSG), 
+              customText("Phone : ", employee.phone ?? notFoundMSG),
               customText("Website : ", employee.website ?? notFoundMSG),
-              customText("Address : ", "${employee.address!.street} - ${employee.address!.suite} - ${employee.address!.city}" ),
-              customText("ZipCode : ", employee.address!.zipcode ?? notFoundMSG),
-              customText("Company : ", "${employee.company!.name } - ${employee.company!.catchPhrase} - ${employee.company!.bs}"),
+              customText("Address : ",
+                  "${employee.address!.street} - ${employee.address!.suite} - ${employee.address!.city}"),
+              customText(
+                  "ZipCode : ", employee.address!.zipcode ?? notFoundMSG),
+              customText("Company : ",
+                  "${employee.company!.name} - ${employee.company!.catchPhrase} - ${employee.company!.bs}"),
             ],
           ),
         ),
@@ -67,6 +70,6 @@ class UserDetailsScreen extends StatelessWidget {
               fontSize: 20,
               color: Colors.blueGrey,
             )),
-        TextSpan(text: content ?? "Data Not Found" , style: TextStyle(fontSize: 18))
+        TextSpan(text: content, style: TextStyle(fontSize: 18))
       ]));
 }
