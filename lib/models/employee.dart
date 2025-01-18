@@ -13,7 +13,7 @@ String employeeToJson(List<Employee> data) =>
 class Employee {
   int id;
   String name;
-  String? username;
+  String username;
   String? email;
   Address? address;
   String? phone;
@@ -23,7 +23,7 @@ class Employee {
   Employee({
     required this.id,
     required this.name,
-    this.username,
+    required this.username,
     this.email,
     this.address,
     this.phone,

@@ -135,7 +135,13 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const AddUserScreen()),
+            MaterialPageRoute(builder: (context) => AddUserScreen(addEmployee:(employee) {
+              return service.addEmployee(employee).then((value) {
+                return employee == value;
+              },).catchError((error)=>false);
+            }, onDone: () {
+              Navigator.pop(context);
+            },)),
           );
         },
         child: const Icon(
