@@ -4,8 +4,8 @@ import 'package:sprints_user_profile_management/screens/add_user_screen.dart';
 import 'package:sprints_user_profile_management/screens/edit_user_screen.dart';
 import 'package:sprints_user_profile_management/services/api_service.dart';
 import 'package:sprints_user_profile_management/services/shared_prefs_service.dart';
-import 'package:sprints_user_profile_management/widgets/home_screen_widgets/card.dart';
-import 'package:sprints_user_profile_management/widgets/home_screen_widgets/shimmer.dart';
+import 'package:sprints_user_profile_management/screens/widgets/card.dart';
+import 'package:sprints_user_profile_management/screens/widgets/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
