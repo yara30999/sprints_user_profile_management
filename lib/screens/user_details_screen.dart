@@ -67,6 +67,6 @@ class UserDetailsScreen extends StatelessWidget {
               fontSize: 20,
               color: Colors.blueGrey,
             )),
-        TextSpan(text: content , style: TextStyle(fontSize: 18))
+        TextSpan(text: content ?? "Data Not Found" , style: TextStyle(fontSize: 18))
       ]));
 }
