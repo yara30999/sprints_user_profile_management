@@ -34,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-
   Future<void> refreshEmployees() async {
     await AppPreferences.clearCachedEmployees();
     setState(() {
@@ -61,10 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
-                  itemCount: 7,
-                  itemBuilder: (context, index) {
-                    return ShimmerCard();
-                  },);
+                itemCount: 7,
+                itemBuilder: (context, index) {
+                  return ShimmerCard();
+                },
+              );
             } else if (snapshot.hasError) {
               return Center(
                 child: Text('Error: ${snapshot.error}'),
@@ -81,8 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: employeeList.length,
               separatorBuilder: (context, index) {
                 return SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.001
-                );
+                    height: MediaQuery.of(context).size.height * 0.001);
               },
               itemBuilder: (context, index) {
                 final employee = employeeList[index];
@@ -91,22 +90,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   direction: DismissDirection.horizontal,
                   onDismissed: (direction) async {
                     if (direction == DismissDirection.endToStart) {
-                      await service.deleteEmployee(employee.id!);
+                      await service.deleteEmployee(employee.id);
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('${employee.name} deleted successfully' ,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold
+                        SnackBar(
+                          content: Text(
+                            '${employee.name} deleted successfully',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          backgroundColor: Colors.red,
                         ),
-                        ),
-                        backgroundColor: Colors.red,),
                       );
                     } else if (direction == DismissDirection.startToEnd) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              EditUserScreen(employee: employee,),
+                          builder: (context) => EditUserScreen(
+                            employee: employee,
+                            editEmployee: (employee) {
+                              return service.updateEmployee(employee).then(
+                                (value) {
+                                  return employee == value;
+                                },
+                              ).catchError((error) => false);
+                            },
+                            onDone: () {
+                              Navigator.pop(context);
+                            },
+                          ),
                         ),
                       );
                     }
@@ -123,7 +135,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: const Icon(Icons.delete, color: Colors.white),
                   ),
-                  child: CardList(employee: employee,),
+                  child: CardList(
+                    employee: employee,
+                  ),
                 );
               },
             );
@@ -135,13 +149,19 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddUserScreen(addEmployee:(employee) {
-              return service.addEmployee(employee).then((value) {
-                return employee == value;
-              },).catchError((error)=>false);
-            }, onDone: () {
-              Navigator.pop(context);
-            },)),
+            MaterialPageRoute(
+                builder: (context) => AddUserScreen(
+                      addEmployee: (employee) {
+                        return service.addEmployee(employee).then(
+                          (value) {
+                            return employee == value;
+                          },
+                        ).catchError((error) => false);
+                      },
+                      onDone: () {
+                        Navigator.pop(context);
+                      },
+                    )),
           );
         },
         child: const Icon(
