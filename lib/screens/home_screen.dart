@@ -41,6 +41,30 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void addEmployee(Employee newEmployee) async {
+    // Step 1: Resolve the current list of employees
+    List<Employee> currentList = await employees;
+    // Step 2: Add the new employee to the list
+    currentList.add(newEmployee);
+    // Step 3: Update the future with the modified list
+    employees = Future.value(currentList);
+  }
+
+  void updateEmployee(int id, Employee updatedEmployee) async {
+    // Step 1: Resolve the current list of employees
+    List<Employee> currentList = await employees;
+    // Step 2: Find the index of the employee to update
+    int index = currentList.indexWhere((employee) => employee.id == id);
+    if (index != -1) {
+      // Step 3: Update the employee at the found index
+      currentList[index] = updatedEmployee;
+      // Step 4: Update the future with the modified list
+      employees = Future.value(currentList);
+    } else {
+      debugPrint('Employee with ID $id not found.');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +135,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             editEmployee: (employee) {
                               return service.updateEmployee(employee).then(
                                 (value) {
-                                  return employee == value;
+                                  setState(() {
+                                    updateEmployee(employee.id, value);
+                                  });
+                                  return true;
                                 },
                               ).catchError((error) => false);
                             },
@@ -154,7 +181,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       addEmployee: (employee) {
                         return service.addEmployee(employee).then(
                           (value) {
-                            return employee == value;
+                            setState(() {
+                              addEmployee(value);
+                            });
+                            return true;
                           },
                         ).catchError((error) => false);
                       },
