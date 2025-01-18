@@ -3,7 +3,7 @@ import 'package:sprints_user_profile_management/models/employee.dart';
 import 'package:sprints_user_profile_management/screens/user_details_screen.dart';
 
 class CardList extends StatelessWidget {
-  final Employee employee ;
+  final Employee employee;
   const CardList({super.key, required this.employee});
 
   @override
@@ -15,7 +15,8 @@ class CardList extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.03), // نسبة من العرض
+        borderRadius: BorderRadius.circular(
+            MediaQuery.of(context).size.width * 0.03), // نسبة من العرض
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
@@ -63,7 +64,12 @@ class CardList extends StatelessWidget {
             size: MediaQuery.of(context).size.width * 0.06,
           ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_)=> UserDetailsScreen(employee: employee ,)));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => UserDetailsScreen(
+                          employee: employee,
+                        )));
           },
         ),
       ),
