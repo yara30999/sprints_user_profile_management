@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   direction: DismissDirection.horizontal,
                   onDismissed: (direction) async {
                     if (direction == DismissDirection.endToStart) {
-                      await service.deleteEmployee(employee.id!);
+                      await service.deleteEmployee(employee.id);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('${employee.name} deleted successfully' ,
                         style: TextStyle(

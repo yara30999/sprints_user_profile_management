@@ -25,46 +25,51 @@ class CardList extends StatelessWidget {
           ),
         ],
       ),
-      child: ListTile(
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.05,
-          vertical: MediaQuery.of(context).size.height * 0.01,
-        ),
-        leading: CircleAvatar(
-          backgroundColor: Colors.blueGrey,
-          radius: MediaQuery.of(context).size.width * 0.06,
-          child: Text(
-            employee.name[0],
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: MediaQuery.of(context).size.width * 0.05,
-              fontWeight: FontWeight.bold,
+      child: InkWell(
+        onTap:  () {
+              Navigator.push(context, MaterialPageRoute(builder: (_)=> UserDetailsScreen(employee: employee)));
+            },
+        child: ListTile(
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.05,
+            vertical: MediaQuery.of(context).size.height * 0.01,
+          ),
+          leading: CircleAvatar(
+            backgroundColor: Colors.blueGrey,
+            radius: MediaQuery.of(context).size.width * 0.06,
+            child: Text(
+              employee.name[0],
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: MediaQuery.of(context).size.width * 0.05,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
-        ),
-        title: Text(
-          employee.name,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: MediaQuery.of(context).size.width * 0.045,
-            color: Colors.black87,
+          title: Text(
+            employee.name,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: MediaQuery.of(context).size.width * 0.045,
+              color: Colors.black87,
+            ),
           ),
-        ),
-        subtitle: Text(
-          "${employee.id} • ${employee.username}",
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: MediaQuery.of(context).size.width * 0.04,
+          subtitle: Text(
+            "${employee.id} • ${employee.username}",
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: MediaQuery.of(context).size.width * 0.04,
+            ),
           ),
-        ),
-        trailing: IconButton(
-          icon: Icon(
-            Icons.more_vert,
-            size: MediaQuery.of(context).size.width * 0.06,
+          trailing: IconButton(
+            icon: Icon(
+              Icons.more_vert,
+              size: MediaQuery.of(context).size.width * 0.06,
+            ),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_)=> UserDetailsScreen(employee: employee)));
+            },
           ),
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_)=> const UserDetailsScreen()));
-          },
         ),
       ),
     );
