@@ -45,7 +45,7 @@ class AddUserScreen extends StatelessWidget {
             key: _formKey,
             child: Column(
               children: [
-                Text('Personal Details'),
+                Text('Personal Details', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'ID'),
                   controller: _idController,
@@ -91,7 +91,7 @@ class AddUserScreen extends StatelessWidget {
                   decoration: InputDecoration(labelText: 'Website'),
                   controller: _websiteController,
                 ),
-                Text('Address Details'),
+                Text('Address Details', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Street'),
                   controller: _streetController,
@@ -113,7 +113,7 @@ class AddUserScreen extends StatelessWidget {
                 TextFormField(
                     decoration: InputDecoration(labelText: 'Zipcode'),
                     controller: _zipcodeController),
-                Text('Company Details'),
+                Text('Company Details', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Company Name'),
                   controller: _companyNameController,
@@ -183,7 +183,7 @@ class AddUserScreen extends StatelessWidget {
                       }
                     });
                   },
-                  child: Text('Add User'),
+                  child: Text('Add User', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
                 ),
               ],
             ),
